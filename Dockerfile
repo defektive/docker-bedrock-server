@@ -1,9 +1,9 @@
-FROM phusion/baseimage:0.11
+FROM debian
 
 CMD ["/sbin/my_init"]
 
 RUN apt-get update \
-  && apt-get -y install unzip \
+  && apt-get -y install curl unzip openssl libc-bin libc6 \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && useradd -ms /bin/bash bedrock \
   && su - bedrock -c "mkdir -p bedrock_server/data/worlds" \
